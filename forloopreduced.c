@@ -4,29 +4,14 @@
 
 void rotate_cc(int p[n], int count)
 {
-    count %= n;
-
-    int i = 0, j = 0;
-    int temp = p[0], next;
-
-    for (int k = 0; k < n; k++)
-    {
-        j = (i + count) % n;
-
-        if (j == 0 || (j < i && k < n - 1))
-        {
-            p[i] = temp;
-            i = j + 1;
-            temp = p[i];
-        }
-        else
-        {
-            next = p[j];
-            p[j] = temp;
-            temp = next;
-            i = j;
-        }
-    }
+    for(int k = 0, i = -1, l=-1; k < n; k++){
+        if (i=l)i=(++l + count) % n;
+        int j = (i + count) % n;
+        int temp = p[i];
+        p[i]=p[j];
+        p[j]=temp;
+        i=j;
+        
 }
 int main()
 {
